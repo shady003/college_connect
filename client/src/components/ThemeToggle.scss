@@ -1,0 +1,66 @@
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    border-color: #00ffe7;
+    box-shadow: 0 0 15px rgba(0, 255, 231, 0.3);
+    transform: scale(1.05);
+  }
+
+  .toggle-track {
+    width: 50px;
+    height: 24px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+
+    .toggle-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+      &.light {
+        left: 2px;
+        background: linear-gradient(135deg, #ffd700, #ff8c00);
+      }
+
+      &.dark {
+        left: 26px;
+        background: linear-gradient(135deg, #4a5568, #2d3748);
+      }
+
+      .toggle-icon {
+        font-size: 12px;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+[data-theme="light"] .theme-toggle {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.3);
+  
+  .toggle-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  &:hover {
+    border-color: #3182ce;
+    box-shadow: 0 0 15px rgba(49, 130, 206, 0.3);
+  }
+}

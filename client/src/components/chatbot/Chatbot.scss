@@ -1,0 +1,132 @@
+.chatbot {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+
+  .chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-neon);
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .chatbot-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+
+    .chatbot-header {
+      padding: 1rem;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h4 {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      button {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .message {
+        display: flex;
+        margin-bottom: 0.5rem;
+
+        &.user-message {
+          justify-content: flex-end;
+          
+          .message-content {
+            background: var(--primary-gradient);
+            color: #000;
+            font-weight: 600;
+          }
+        }
+
+        &.bot-message {
+          justify-content: flex-start;
+          
+          .message-content {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+          }
+        }
+
+        .message-content {
+          max-width: 80%;
+          padding: 0.75rem;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          line-height: 1.4;
+        }
+      }
+    }
+
+    .chatbot-input {
+      padding: 1rem;
+      border-top: 1px solid var(--glass-border);
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+
+      .input-group {
+        flex: 1;
+        margin-bottom: 0;
+      }
+
+      button {
+        padding: 0.75rem 1rem;
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .chatbot {
+    bottom: 1rem;
+    right: 1rem;
+
+    .chatbot-window {
+      width: 300px;
+      height: 400px;
+    }
+  }
+}

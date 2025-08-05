@@ -1,0 +1,51 @@
+.notifications {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 1rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notifications h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.notifications ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notifications li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notifications li.unread {
+  background-color: #e6f7ff;
+  font-weight: bold;
+}
+
+.notifications li.read {
+  background-color: #fff;
+  color: #666;
+}
+
+.notifications li:hover {
+  background-color: #d6eaff;
+}
+
+.notifications li p {
+  margin: 0.25rem 0;
+  color: #555;
+}
+
+.notifications li small {
+  color: #999;
+  font-size: 0.75rem;
+}

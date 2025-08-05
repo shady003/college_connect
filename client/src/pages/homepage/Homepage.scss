@@ -1,0 +1,95 @@
+.home {
+    position: relative;
+    z-index: 1;
+    color: var(--text-primary);
+  
+    .hero {
+      position: relative;
+      height: 90vh;
+      overflow: hidden;
+  
+      .image-scroll {
+        display: flex;
+        animation: scroll 20s linear infinite;
+        img {
+          width: 100vw;
+          height: 90vh;
+          object-fit: cover;
+        }
+      }
+  
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        
+        .hero-content {
+          padding: 3rem;
+          text-align: center;
+          max-width: 600px;
+          
+          h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+          }
+    
+          p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+          }
+          
+          .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  
+    .about {
+      padding: 3rem 2rem;
+      text-align: center;
+      
+      .about-content {
+        padding: 3rem;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+  
+        h2 {
+          font-size: 2.5rem;
+          margin-bottom: 2rem;
+          font-weight: 700;
+        }
+  
+        p {
+          font-size: 1.2rem;
+          line-height: 1.8;
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+  
