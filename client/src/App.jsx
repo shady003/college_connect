@@ -20,6 +20,7 @@ import GroupChat from "./pages/group/GroupChat.jsx";
 import GroupDetails from "./pages/group/GroupDetails.jsx";
 import ShareResource from "./pages/share-resource/ShareResource.jsx";
 import Profile from "./pages/profile/Profile.jsx";
+import Books from "./pages/books/Books.jsx";
 
 // Protected Route Component with role-based access
 const ProtectedRoute = ({ children, requiredRole }) => {
@@ -211,6 +212,11 @@ function AppRoutes() {
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        } />
+        <Route path="/books" element={
+          <ProtectedRoute>
+            <Books />
           </ProtectedRoute>
         } />
       </Routes>

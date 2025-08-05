@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { useTheme } from '../../context/ThemeContext.jsx';
 import ThemeToggle from '../ThemeToggle.jsx';
 import './Navbar.scss';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, logout } = useAuth();
+  const { isDark } = useTheme();
   const navigate = useNavigate();
 
   const handleToggle = () => setOpen(!open);
@@ -21,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" data-theme={isDark ? 'dark' : 'light'}>
       <div className="navbar__logo">
         <Link to="/" className="logo-link">
           CollegeConnect

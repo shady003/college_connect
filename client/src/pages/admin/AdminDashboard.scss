@@ -2,6 +2,7 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  background: var(--bg-primary);
 
   .animated-bg {
     position: fixed;
@@ -9,7 +10,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+    background: var(--bg-primary);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     z-index: -1;
@@ -46,7 +47,7 @@
     }
 
     p {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-secondary);
       margin: 0;
       font-size: 1.1rem;
     }
@@ -76,7 +77,7 @@
       }
 
       p {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-secondary);
         font-size: 1.2rem;
         margin: 0;
       }
@@ -102,10 +103,10 @@
       flex: 1;
       padding: 15px 25px;
       border: none;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--glass-bg);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
       cursor: pointer;
       border-radius: 15px;
       font-weight: 600;
@@ -113,7 +114,7 @@
       transition: all 0.3s ease;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.15);
+        background: var(--glass-bg-hover);
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
       }
@@ -155,7 +156,7 @@
 
           .stat-info {
             h3 {
-              color: rgba(255, 255, 255, 0.9);
+              color: var(--text-primary);
               font-size: 1.1rem;
               font-weight: 600;
               margin-bottom: 8px;
@@ -182,7 +183,7 @@
           border-radius: 20px;
 
           h3 {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-primary);
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 25px;
@@ -199,9 +200,9 @@
               justify-content: space-between;
               align-items: center;
               padding: 20px;
-              background: rgba(255, 255, 255, 0.05);
+              background: var(--glass-bg);
               border-radius: 15px;
-              border: 1px solid rgba(255, 255, 255, 0.1);
+              border: 1px solid var(--border-color);
               transition: all 0.3s ease;
 
               &:hover {
@@ -211,20 +212,20 @@
 
               .item-info {
                 h4 {
-                  color: rgba(255, 255, 255, 0.9);
+                  color: var(--text-primary);
                   font-size: 1.1rem;
                   font-weight: 600;
                   margin-bottom: 5px;
                 }
 
                 p {
-                  color: rgba(255, 255, 255, 0.7);
+                  color: var(--text-secondary);
                   font-size: 0.95rem;
                   margin-bottom: 3px;
                 }
 
                 span {
-                  color: rgba(255, 255, 255, 0.6);
+                  color: var(--text-muted);
                   font-size: 0.85rem;
                 }
               }
@@ -249,7 +250,7 @@
       border-radius: 20px;
 
       h2 {
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 10px;
@@ -257,7 +258,7 @@
       }
 
       p {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--text-secondary);
         font-size: 1.1rem;
         margin-bottom: 30px;
         text-align: center;
@@ -325,14 +326,14 @@
             }
 
             h4 {
-              color: rgba(255, 255, 255, 0.9);
+              color: var(--text-primary);
               font-size: 1.2rem;
               font-weight: 600;
               margin-bottom: 5px;
             }
 
             p {
-              color: rgba(255, 255, 255, 0.7);
+              color: var(--text-secondary);
               font-size: 0.95rem;
               margin-bottom: 8px;
               text-align: left;
@@ -360,8 +361,8 @@
 
                 &.privacy,
                 &.type {
-                  background: rgba(255, 255, 255, 0.1);
-                  color: rgba(255, 255, 255, 0.8);
+                  background: var(--glass-bg);
+                  color: var(--text-secondary);
                 }
 
                 &.members,
@@ -392,13 +393,13 @@
               border-left: 3px solid #28a745;
 
               small {
-                color: rgba(255, 255, 255, 0.7);
+                color: var(--text-secondary);
                 font-size: 0.75rem;
               }
             }
 
             span {
-              color: rgba(255, 255, 255, 0.6);
+              color: var(--text-muted);
               font-size: 0.85rem;
               display: block;
               margin-bottom: 3px;
@@ -426,9 +427,9 @@
 
       .empty-state {
         padding: 60px 40px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--glass-bg);
         border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
         text-align: center;
 
         h3 {
@@ -439,7 +440,7 @@
         }
 
         p {
-          color: rgba(255, 255, 255, 0.6);
+          color: var(--text-muted);
           font-size: 1rem;
           margin: 0;
         }
@@ -466,7 +467,7 @@
       border-radius: 20px;
 
       h3 {
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 25px;
@@ -483,16 +484,16 @@
         .glass-input {
           width: 100%;
           padding: 12px 16px;
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--glass-bg);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid var(--border-color);
           border-radius: 10px;
-          color: white;
+          color: var(--text-primary);
           font-size: 1rem;
           transition: all 0.3s ease;
 
           &::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
           }
 
           &:focus {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { newRequest } from "../../utils/newRequest.js";
+import { useTheme } from "../../context/ThemeContext.jsx";
 import "./Announcements.scss";
 
 const Announcements = () => {
@@ -11,6 +12,7 @@ const Announcements = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [unreadCount, setUnreadCount] = useState(0);
   const navigate = useNavigate();
+  const { isDark } = useTheme();
 
   const categories = [
     "Exam", "Holiday", "Event", "General", "Academic", "Cultural", "Sports", "Other"
@@ -82,7 +84,7 @@ const Announcements = () => {
   };
 
   return (
-    <div className="announcements-container">
+    <div className="announcements-container" data-theme={isDark ? 'dark' : 'light'}>
       <div className="animated-bg"></div>
       <div className="announcements">
         <div className="announcements-header glass-card">

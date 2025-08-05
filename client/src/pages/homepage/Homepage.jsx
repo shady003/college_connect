@@ -1,10 +1,15 @@
 import React from "react";
 import "./Homepage.scss";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext.jsx";
+import ThemeToggle from "../../components/ThemeToggle.jsx";
 
 const Home = () => {
+  const { isDark } = useTheme();
+  
   return (
-    <div className="home">
+    <div className="home" data-theme={isDark ? 'dark' : 'light'}>
+      <ThemeToggle />
       {/* Hero Section with Scrolling Images */}
       <div className="hero">
         <div className="image-scroll">

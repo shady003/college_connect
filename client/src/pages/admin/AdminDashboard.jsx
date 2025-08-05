@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext.jsx";
+import usePageMeta from "../../hooks/usePageMeta.js";
 import { newRequest } from "../../utils/newRequest.js";
 import "./AdminDashboard.scss";
 
 const AdminDashboard = () => {
+  usePageMeta("Admin Dashboard", "⚙️");
+  const { isDark } = useTheme();
   const [stats, setStats] = useState({
     totalUsers: 0,
     totalGroups: 0,
@@ -276,7 +280,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="admin-dashboard-container">
+    <div className="admin-dashboard-container" data-theme={isDark ? 'dark' : 'light'}>
       <div className="animated-bg"></div>
       <div className="admin-dashboard">
         {/* Header */}

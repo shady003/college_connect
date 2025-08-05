@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { newRequest } from "../../utils/newRequest.js";
+import { useTheme } from "../../context/ThemeContext.jsx";
 import "./Explore.scss";
 
 const Explore = () => {
@@ -12,6 +13,7 @@ const Explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const navigate = useNavigate();
+  const { isDark } = useTheme();
 
   const categories = {
     groups: ["Academic", "Social", "Technical", "Sports", "Cultural", "Other"],
@@ -101,7 +103,7 @@ const Explore = () => {
   };
 
   return (
-    <div className="explore">
+    <div className="explore" data-theme={isDark ? 'dark' : 'light'}>
       <div className="explore-header glass-card">
         <h1 className="gradient-text">Explore CollegeConnect</h1>
         <p>Discover groups, events, and resources from students across colleges</p>

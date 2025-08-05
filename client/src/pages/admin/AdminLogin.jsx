@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext.jsx";
+import usePageMeta from "../../hooks/usePageMeta.js";
 import { newRequest } from "../../utils/newRequest.js";
 import "./AdminLogin.scss";
 
 const AdminLogin = () => {
+  usePageMeta("Admin Login", "🔐");
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -45,7 +49,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="admin-login-container">
+    <div className="admin-login-container" data-theme={isDark ? 'dark' : 'light'}>
       <div className="animated-bg"></div>
       <div className="admin-login">
         <div className="login-card glass-card">

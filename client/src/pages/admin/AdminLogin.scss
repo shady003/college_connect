@@ -5,6 +5,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  background: var(--bg-primary);
 
   .animated-bg {
     position: fixed;
@@ -12,7 +13,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+    background: var(--bg-primary);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     z-index: -1;
@@ -60,7 +61,7 @@
       }
 
       p {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-secondary);
         font-size: 1.1rem;
         margin: 0;
       }
@@ -83,7 +84,7 @@
 
         label {
           display: block;
-          color: rgba(255, 255, 255, 0.9);
+          color: var(--text-primary);
           font-weight: 600;
           margin-bottom: 8px;
           font-size: 0.95rem;
@@ -92,23 +93,23 @@
         .glass-input {
           width: 100%;
           padding: 15px 20px;
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--glass-bg);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid var(--border-color);
           border-radius: 15px;
-          color: white;
+          color: var(--text-primary);
           font-size: 1rem;
           transition: all 0.3s ease;
 
           &::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
           }
 
           &:focus {
             outline: none;
             border-color: #ff6b6b;
             box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
-            background: rgba(255, 255, 255, 0.15);
+            background: var(--glass-bg-hover);
           }
         }
       }
@@ -144,7 +145,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
 
       p {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-secondary);
         margin-bottom: 15px;
         font-size: 0.95rem;
       }

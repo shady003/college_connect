@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation.js";
+import usePageMeta from "../../hooks/usePageMeta.js";
 import { newRequest } from "../../utils/newRequest.js";
 import Chatbot from "../../components/chatbot/Chatbot.jsx";
 import LazyThreeBackground from "../../components/LazyThreeBackground.jsx";
 import ThemeToggle from "../../components/ThemeToggle.jsx";
 import Dashboard3D from "../../components/Dashboard3D.jsx";
+import Books from "../books/Books.jsx";
 import "./Dashboard.scss";
 
 const Dashboard = () => {
+  usePageMeta("Dashboard", "🏠");
   const [groups, setGroups] = useState([]);
   const [allGroups, setAllGroups] = useState([]);
   const [events, setEvents] = useState([]);
@@ -39,21 +42,17 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       if (!user) {
-        console.log('No user found, skipping data fetch');
+
         setLoading(false);
         return;
       }
 
       try {
-        console.log('Fetching dashboard data for user:', user.username);
-        
         // Fetch groups with better error handling
         try {
           const groupsRes = await newRequest.get("/groups/user/joined");
-          console.log('Groups response:', groupsRes.data);
           const groupsData = Array.isArray(groupsRes.data) ? groupsRes.data : [];
           setGroups(groupsData);
-          console.log('Set groups:', groupsData.length);
         } catch (err) {
           console.error("Groups fetch error:", err.response?.data || err.message);
           // Try fallback to public groups
@@ -70,10 +69,8 @@ const Dashboard = () => {
         // Fetch all groups
         try {
           const allGroupsRes = await newRequest.get("/groups");
-          console.log('All groups response:', allGroupsRes.data);
           const allGroupsData = allGroupsRes.data?.groups || allGroupsRes.data || [];
           setAllGroups(Array.isArray(allGroupsData) ? allGroupsData : []);
-          console.log('Set all groups:', allGroupsData.length);
         } catch (err) {
           console.error("All groups fetch error:", err.response?.data || err.message);
           // Try public groups as fallback
@@ -90,10 +87,8 @@ const Dashboard = () => {
         // Fetch events
         try {
           const eventsRes = await newRequest.get("/events");
-          console.log('Events response:', eventsRes.data);
           const eventsData = eventsRes.data?.events || eventsRes.data || [];
           setEvents(Array.isArray(eventsData) ? eventsData : []);
-          console.log('Set events:', eventsData.length);
         } catch (err) {
           console.error("Events fetch error:", err.response?.data || err.message);
           setEvents([]);
@@ -102,10 +97,8 @@ const Dashboard = () => {
         // Fetch resources
         try {
           const resourcesRes = await newRequest.get("/resources");
-          console.log('Resources response:', resourcesRes.data);
           const resourcesData = resourcesRes.data?.resources || resourcesRes.data || [];
           setResources(Array.isArray(resourcesData) ? resourcesData : []);
-          console.log('Set resources:', resourcesData.length);
         } catch (err) {
           console.error("Resources fetch error:", err.response?.data || err.message);
           setResources([]);
@@ -172,13 +165,7 @@ const Dashboard = () => {
     );
   }
 
-  // Debug logging
-  console.log('Dashboard render - User:', user?.username);
-  console.log('Dashboard render - Groups:', groups?.length);
-  console.log('Dashboard render - Events:', events?.length);
-  console.log('Dashboard render - Resources:', resources?.length);
-  console.log('Dashboard render - Loading:', loading);
-  console.log('Dashboard render - ActiveTab:', activeTab);
+
 
   if (!user) {
     return (
@@ -266,14 +253,16 @@ const Dashboard = () => {
           <>
             {/* Tabs Navigation */}
             <nav className="dashboard-nav">
-              {["overview", "groups", "all-groups", "events", "resources"].map(
+              {["overview", "groups", "all-groups", "events", "resources", "books"].map(
                 (tab) => (
                   <button
                     key={tab}
                     className={activeTab === tab ? "active" : ""}
                     onClick={() => handleTabChange(tab)}
                   >
-                    {tab === "all-groups" ? "All Groups" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                    {tab === "all-groups" ? "All Groups" : 
+                     tab === "books" ? "📚 Books" :
+                     tab.charAt(0).toUpperCase() + tab.slice(1)}
                   </button>
                 )
               )}
@@ -616,6 +605,10 @@ const Dashboard = () => {
                 )}
               </div>
             </div>
+          )}
+
+          {activeTab === "books" && (
+            <Books />
           )}
             </main>
             <Chatbot />

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext.jsx";
 import { newRequest } from "../../utils/newRequest.js";
 import "./AdminRegister.scss";
 
 const AdminRegister = () => {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -50,7 +52,7 @@ const AdminRegister = () => {
   };
 
   return (
-    <div className="admin-register-container">
+    <div className="admin-register-container" data-theme={isDark ? 'dark' : 'light'}>
       <div className="animated-bg"></div>
       <div className="admin-register">
         <div className="register-card glass-card">

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { useTheme } from "../../context/ThemeContext.jsx";
+import ThemeToggle from "../../components/ThemeToggle.jsx";
 import "./Login.scss";
 
 const Login = () => {
@@ -14,6 +16,7 @@ const Login = () => {
   const [progress, setProgress] = useState("");
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { isDark } = useTheme();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,7 +97,8 @@ const Login = () => {
   };
 
   return (
-    <div className="login-bg-wrapper">
+    <div className="login-bg-wrapper" data-theme={isDark ? 'dark' : 'light'}>
+      <ThemeToggle />
       <div className="animated-bg">
         <div className="floating-shapes">
           <div className="shape shape-1"></div>
