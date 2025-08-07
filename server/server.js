@@ -54,6 +54,12 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+// Test auth endpoint
+import { verifyToken } from "./middleware/verifyToken.js";
+app.get('/api/test-auth', verifyToken, (req, res) => {
+  res.json({ message: 'Auth working', user: req.user });
+});
+
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;
     const errorMessege = err.message || "Something went wrong !"

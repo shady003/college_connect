@@ -140,68 +140,50 @@ export const getEvent = async (req, res, next) => {
 };
 
 // Attend an event
-import Notification from "../models/notification.model.js";
-
 export const attendEvent = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { status = 'going' } = req.body;
+    
+    if (!req.user) {
+      return res.status(401).json({ message: "User not authenticated" });
+    }
     
     const event = await Event.findById(id);
-    
     if (!event) {
       return res.status(404).json({ message: "Event not found" });
     }
 
-    // Check if user is already registered
-    const existingAttendee = event.attendees.find(attendee => 
+    // Check if user is already attending
+    const isAlreadyAttending = event.attendees.some(attendee => 
       attendee.user.toString() === req.user.id
     );
 
-    if (existingAttendee) {
-      // Update status
-      existingAttendee.status = status;
-      await event.save();
-    } else {
-      // Check if event is full
-      if (event.maxAttendees && event.attendees.length >= event.maxAttendees) {
-        return res.status(400).json({ message: "Event is full" });
-      }
-
-      // Add new attendee
-      event.attendees.push({
-        user: req.user.id,
-        status,
-        registeredAt: new Date()
-      });
-      await event.save();
-
-      // Create notification for event organizer (admin)
-      const notification = new Notification({
-        recipient: event.organizer,
-        sender: req.user.id,
-        type: 'event_invite',
-        title: 'New Event Join Request',
-        message: `${req.user.username} wants to join your event "${event.title}".`,
-        data: {
-          eventId: event._id,
-          url: `/event/${event._id}`
-        },
-        priority: 'High'
-      });
-      await notification.save();
+    if (isAlreadyAttending) {
+      return res.status(400).json({ message: "Already attending this event" });
     }
 
-    console.log(`User ${req.user.username} ${status} event ${event.title}`);
+    // Check if event is full
+    if (event.maxAttendees && event.attendees.length >= event.maxAttendees) {
+      return res.status(400).json({ message: "Event is full" });
+    }
+
+    // Add new attendee
+    event.attendees.push({
+      user: req.user.id,
+      status: 'going',
+      registeredAt: new Date()
+    });
+    
+    await event.save();
 
     res.status(200).json({ 
-      message: `Successfully ${status} the event`,
+      message: "Successfully joined the event",
       event 
     });
 
   } catch (err) {
     console.error("Attend event error:", err);
-    next(createError(500, "Failed to attend event"));
+    res.status(500).json({ message: "Failed to attend event", error: err.message });
   }
 };
 

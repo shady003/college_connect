@@ -12,6 +12,8 @@ import Explore from "./pages/explore/Explore.jsx";
 import CreateEvent from "./pages/create-event/CreateEvent.jsx";
 import Announcements from "./pages/announcements/Announcements.jsx";
 import AnnouncementDetail from "./pages/announcements/AnnouncementDetail.jsx";
+import Events from "./pages/events/Events.jsx";
+import EventDetail from "./pages/events/EventDetail.jsx";
 import AdminLogin from "./pages/admin/AdminLogin.jsx";
 import AdminRegister from "./pages/admin/AdminRegister.jsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
@@ -192,6 +194,16 @@ function AppRoutes() {
         <Route path="/announcement/:id" element={
           <ProtectedRoute>
             <AnnouncementDetail />
+          </ProtectedRoute>
+        } />
+        <Route path="/events" element={
+          <ProtectedRoute>
+            <Events />
+          </ProtectedRoute>
+        } />
+        <Route path="/event/:id" element={
+          <ProtectedRoute>
+            <EventDetail />
           </ProtectedRoute>
         } />
         <Route path="/group/:id" element={

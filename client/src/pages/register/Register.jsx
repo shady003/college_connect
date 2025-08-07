@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";
-import ThemeToggle from "../../components/ThemeToggle.jsx";
+
 import upload from "../../utils/uplaod.js";
 import { newRequest } from "../../utils/newRequest.js";
 import "./Register.scss";
@@ -103,7 +103,7 @@ const Register = () => {
 
   return (
     <div className="register-bg-wrapper" data-theme={isDark ? 'dark' : 'light'}>
-      <ThemeToggle />
+
       <div className="animated-bg">
         <div className="floating-shapes">
           <div className="shape shape-1"></div>

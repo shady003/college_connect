@@ -195,10 +195,16 @@ const Announcements = () => {
 
                   <div className="announcement-actions">
                     <button 
-                      onClick={() => navigate(`/announcement/${announcement._id}`)}
+                      onClick={() => {
+                        if (announcement.category === "Event") {
+                          navigate(`/event/${announcement._id}`);
+                        } else {
+                          navigate(`/announcement/${announcement._id}`);
+                        }
+                      }}
                       className="btn btn-primary"
                     >
-                      View Details
+                      {announcement.category === "Event" ? "View Event" : "View Details"}
                     </button>
                   </div>
                 </div>
